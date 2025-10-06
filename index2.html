@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bombay Analytics: A community-driven platform for lending analytics teams to discuss trends, share insights, and collaborate.">
+    <meta name="keywords" content="Lending Analytics, Credit Risk, Fintech, Financial Analytics, Portfolio Management, Bombay Analytics">
+    <meta name="author" content="Bombay Analytics">
+    <title>Bombay Analytics 🌉 | Community Platform</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .active-nav {
+            color: #4f46e5; /* indigo-600 */
+            font-weight: 600;
+        }
+        .nav-link {
+            transition: color 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-slate-900 tracking-tight" onclick="showPage('home')">Bombay Analytics 🌉</a>
+            <div class="flex items-center space-x-6 text-slate-600">
+                <a href="#home" id="nav-home" class="nav-link hidden sm:block hover:text-indigo-600 active-nav" onclick="showPage('home')">Home</a>
+                <a href="#people" id="nav-people" class="nav-link hidden sm:block hover:text-indigo-600" onclick="showPage('people')">People</a>
+                 <a href="https://github.com/5hu3hendu/bombay-analytics" target="_blank" class="text-slate-500 hover:text-slate-800">
+                    <i class="fab fa-github fa-lg"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+
+        <!-- Home Page Content -->
+        <div id="home" class="page-content">
+            <!-- Hero Section -->
+            <section class="py-20 sm:py-32">
+                <div class="container mx-auto px-6 text-center">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 tracking-tighter">
+                        Empowering Lending Analytics Teams
+                    </h1>
+                    <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-600">
+                        A community-driven platform to share holistic insights by combining macro trends, industry reports, and portfolio data.
+                    </p>
+                    <div class="mt-8">
+                        <a href="#people" onclick="showPage('people')" class="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-indigo-700 transition-all duration-200">
+                            Meet the Community
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Problem Section -->
+            <section class="bg-white py-20 sm:py-24">
+                <div class="container mx-auto px-6">
+                    <div class="text-center">
+                        <h2 class="text-sm font-semibold uppercase text-indigo-600 tracking-wider">The Challenge</h2>
+                        <p class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">Why We Exist</p>
+                    </div>
+                    <div class="mt-12 max-w-3xl mx-auto bg-slate-100 p-8 rounded-xl shadow-sm">
+                        <p class="text-center text-lg text-slate-700">
+                            Lending is the core of finance, yet analytics teams often lack a dedicated space to connect. There's no platform that merges discussions on macro trends, industry reports, and portfolio insights to foster holistic understanding and innovation.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Solution Section -->
+            <section class="py-20 sm:py-24">
+                <div class="container mx-auto px-6">
+                    <div class="text-center">
+                        <h2 class="text-sm font-semibold uppercase text-indigo-600 tracking-wider">Our Solution</h2>
+                        <p class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">A Collaborative Hub for Discussion</p>
+                    </div>
+                    <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Card 1 -->
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                            <h3 class="font-semibold text-slate-900">Regulatory Trends</h3>
+                            <p class="mt-2 text-slate-600 text-sm">Stay ahead of compliance and policy changes impacting the lending landscape.</p>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                            <h3 class="font-semibold text-slate-900">Portfolio Discussions</h3>
+                            <p class="mt-2 text-slate-600 text-sm">Share and analyze portfolio performance, risk strategies, and growth tactics.</p>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                            <h3 class="font-semibold text-slate-900">Macro & Micro Trends</h3>
+                            <p class="mt-2 text-slate-600 text-sm">Debate the impact of economic shifts and market movements on your models.</p>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                            <h3 class="font-semibold text-slate-900">Process & Automation</h3>
+                            <p class="mt-2 text-slate-600 text-sm">Share best practices on tooling, automation, and workflow efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- City Agnostic & QR Section -->
+            <section class="bg-white py-20 sm:py-24">
+                <div class="container mx-auto px-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div class="text-center md:text-left">
+                            <p class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">We're City Agnostic</p>
+                            <p class="mt-4 text-lg text-slate-600">
+                                The name "Bombay Analytics" is a nod to the financial capital's spirit, but our community is global. We welcome professionals from everywhere. It's about the mindset, not the metro.
+                            </p>
+                        </div>
+                        <div class="bg-slate-100 p-8 rounded-xl shadow-sm flex flex-col items-center">
+                            <h3 class="font-semibold text-slate-900 mb-4">Scan to Visit Our Site</h3>
+                            <div id="qrcode" class="p-4 bg-white rounded-lg shadow-inner"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- People Page Content (hidden by default) -->
+        <div id="people" class="page-content hidden">
+            <section class="py-16 sm:py-20">
+                <div class="container mx-auto px-6">
+                    <div class="text-center">
+                        <h1 class="text-4xl sm:text-5xl font-bold text-slate-900 tracking-tight">Community Directory</h1>
+                        <p class="mt-4 max-w-xl mx-auto text-lg text-slate-600">Find and connect with analytics professionals in our community.</p>
+                        <div class="mt-8 max-w-lg mx-auto">
+                            <input type="search" id="searchInput" placeholder="Search by name, company, role, or place..." class="w-full px-5 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition duration-200">
+                        </div>
+                    </div>
+                    
+                    <div id="people-directory" class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Person cards will be dynamically inserted here -->
+                    </div>
+                     <p id="no-results" class="text-center text-slate-500 mt-16 hidden">No members found matching your search.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-500">
+            <p>&copy; <span id="current-year"></span> Bombay Analytics. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- QR Code Generation Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+    <script>
+        // --- Page Navigation Logic ---
+        const pages = document.querySelectorAll('.page-content');
+        const navLinks = {
+            home: document.getElementById('nav-home'),
+            people: document.getElementById('nav-people')
+        };
+        
+        function showPage(pageId) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Show the selected page
+            const activePage = document.getElementById(pageId);
+            if (activePage) {
+                activePage.classList.remove('hidden');
+            }
+            
+            // Update nav link styles
+            Object.values(navLinks).forEach(link => {
+                link.classList.remove('active-nav');
+            });
+            if (navLinks[pageId]) {
+                navLinks[pageId].classList.add('active-nav');
+            }
+            
+            // Update URL hash
+            window.location.hash = pageId;
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // --- People Directory Logic ---
+        const data = [
+            {
+                'Name': "Shubhendu Singh",
+                'Place': "Mumbai",
+                'Role': "Credit Risk",
+                'Current Company': ["Deloitte"],
+                'In Current Company Since': "2025",
+                'Working Since': "2018",
+                'Past Companies': ["InCred","IDFC","Paytm","Kissht"],
+                'LinkedIn' : "https://linkedin.com/in/5hu3hendu"
+            },
+            {
+                'Name': "Pallav Shobhit",
+                'Place': "Bangalore",
+                'Role': "Lead Risk & Analytics",
+                'Current Company': ["Kiwi"],
+                'In Current Company Since': "2024",
+                'Working Since': "2016",
+                'Past Companies': ["Navi","IDFC"],
+                'LinkedIn' : "https://linkedin.com/in/pallavshobhit"
+            }
+        ];
+
+        const directoryContainer = document.getElementById('people-directory');
+        const searchInput = document.getElementById('searchInput');
+        const noResults = document.getElementById('no-results');
+
+        const renderDirectory = (people) => {
+            directoryContainer.innerHTML = ''; // Clear previous results
+            
+            if (people.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                 noResults.classList.add('hidden');
+            }
+
+            people.forEach(person => {
+                const experience = new Date().getFullYear() - parseInt(person['Working Since']);
+                const pastCompaniesHTML = person['Past Companies'].map(company => 
+                    `<span class="bg-slate-200 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-full">${company}</span>`
+                ).join('');
+
+                const card = `
+                    <div class="bg-white rounded-lg shadow-md p-6 border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-slate-900">${person.Name}</h3>
+                                    <p class="text-sm text-slate-600">${person.Role} @ <strong>${person['Current Company'].join(', ')}</strong></p>
+                                </div>
+                                <a href="${person.LinkedIn}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-blue-600 transition-colors">
+                                    <i class="fab fa-linkedin fa-2x"></i>
+                                </a>
+                            </div>
+                            <div class="mt-4 text-sm space-y-2">
+                                <p><span class="font-semibold text-slate-700">Location:</span> ${person.Place}</p>
+                                <p><span class="font-semibold text-slate-700">Total Experience:</span> ~${experience} years</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 border-t border-slate-200 pt-4">
+                             <h4 class="text-xs font-semibold text-slate-500 uppercase mb-3">Past Experience</h4>
+                             <div class="flex flex-wrap gap-2">
+                                ${pastCompaniesHTML}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                directoryContainer.innerHTML += card;
+            });
+        };
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            const filteredData = data.filter(person => 
+                Object.values(person).flat().join(' ').toLowerCase().includes(searchTerm)
+            );
+            renderDirectory(filteredData);
+        });
+
+        // --- Initial Load Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Generate QR Code
+            new QRCode(document.getElementById("qrcode"), {
+                text: "https://bombay-analytics.com",
+                width: 128,
+                height: 128,
+                colorDark : "#1e293b", // slate-800
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+
+            // Render initial directory
+            renderDirectory(data);
+
+            // Handle initial page view based on URL hash
+            const initialPage = window.location.hash.replace('#', '') || 'home';
+            showPage(initialPage);
+        });
+    </script>
+</body>
+</html>
+
