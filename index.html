@@ -204,28 +204,564 @@
         }
 
         // --- People Directory Logic ---
-        const data = [
-            {
-                'Name': "Shubhendu Singh",
-                'Place': "Mumbai",
-                'Role': "Credit Risk",
-                'Current Company': ["Deloitte"],
-                'In Current Company Since': "2025",
-                'Working Since': "2018",
-                'Past Companies': ["InCred","IDFC","Paytm","Kissht"],
-                'LinkedIn' : "https://linkedin.com/in/5hu3hendu"
-            },
-            {
-                'Name': "Pallav Shobhit",
-                'Place': "Bangalore",
-                'Role': "Lead Risk & Analytics",
-                'Current Company': ["Kiwi"],
-                'In Current Company Since': "2024",
-                'Working Since': "2016",
-                'Past Companies': ["Navi","IDFC"],
-                'LinkedIn' : "https://linkedin.com/in/pallavshobhit"
-            }
-        ];
+        const data = [{
+        'Name': "Shubhendu Singh",
+        'Place': "Mumbai",
+        'Role': "Credit Risk",
+        'Current Company': ["Deloitte"],
+        'In Current Company Since': "2025",
+        'Working Since': "2018",
+        'Past Companies': ["InCred","IDFC","Paytm","Kissht"],
+        'LinkedIn' : "https://linkedin.com/in/5hu3hendu"
+},
+        {
+        'Name': "Pallav Shobhit",
+        'Place': "Bangalore",
+        'Role': "Lead Risk & Analytics",
+        'Current Company': ["Kiwi"],
+        'In Current Company Since': "2024",
+        'Working Since': "2016",
+        'Past Companies': ["Navi","IDFC"],
+        'LinkedIn' : "https://linkedin.com/in/pallavshobhit"
+        },
+        {
+        'Name': "Dipak Katole",
+        'Place': "Mumbai",
+        'Role': "Risk Analytics and Model Validation",
+        'Current Company': ["Godrej Capital"],
+        'In Current Company Since': "2025",
+        'Working Since': "2022",
+        'Past Companies': ["Bajaj Housing Finance"],
+        'LinkedIn' : "https://linkedin.com/in/dipak-katole-731042182"
+        },
+                {
+        'Name': "Hadley Fernandes",
+        'Place': "Mumbai",
+        'Role': "BI & Data Analytics",
+        'Current Company': [""],
+        'In Current Company Since': "",
+        'Working Since': "2011",
+        'Past Companies': ["Ibexi","Tata Tech","Barclays","NPCI","IDFC","Welpsun","Third Bridge"],
+        'LinkedIn' : "https://linkedin.com/in/hadley-fernandes"
+        },
+                {
+        'Name': "Ritik Srivastava",
+        'Place': "Delhi",
+        'Role': "Credit Analytics",
+        'Current Company': ["Revolut"],
+        'In Current Company Since': "2024",
+        'Working Since': "2021",
+        'Past Companies': ["Paytm","Hero Fincorp"],
+        'LinkedIn' : "https://linkedin.com/in/ritik-srivastava-7467b6169"
+        },
+                {
+        'Name': "Janhavi Bagul",
+        'Place': "Pune",
+        'Role': "Data Analyst - BI",
+        'Current Company': ["IDFC"],
+        'In Current Company Since': "2021",
+        'Working Since': "2021",
+        'Past Companies': [""],
+        'LinkedIn' : "https://linkedin.com/in/janhavibagul-dataanalyst"
+        },
+                {
+        'Name': "Anurag Dubey",
+        'Place': "Chennai",
+        'Role': "Data Scientist",
+        'Current Company': ["Manpower Group"],
+        'In Current Company Since': "2024",
+        'Working Since': "2024",
+        'Past Companies': ["Brane Ent."],
+        'LinkedIn' : "https://linkedin.com/in/anurag-dubey-7a7656126"
+        },
+         {
+         'Name': "Harshit Srivastava",
+         'Place': "Bangalore",
+         'Role': "Business/Data Analytics - Lending",
+         'Current Company': ["Paytm"],
+         'In Current Company Since': "2023",
+         'Working Since': "2022",
+         'Past Companies': ["Vedantu"],
+         'LinkedIn' : "https://www.linkedin.com/in/harshit-srivastava-bb05a0a9"
+         },
+         {
+         'Name': "Santanu Kumar",
+         'Place': "Mumbai",
+         'Role': "Analytics",
+         'Current Company': ["Dream11"],
+         'In Current Company Since': "2025",
+         'Working Since': "2023",
+         'Past Companies': ["Fi Money"],
+         'LinkedIn' : "https://linkedin.com/in/santanu-kumar-ml"
+         },
+         {
+         'Name': "Yamini Rege",
+         'Place': "USA",
+         'Role': "Risk & Strategy",
+         'Current Company': ["Wellsfargo"],
+         'In Current Company Since': "2024",
+         'Working Since': "2013",
+         'Past Companies': ["ICICI","Capital Float","InCred","Paytm","Experian US"],
+         'LinkedIn' : "https://linkedin.com/in/yaminirege"
+         },
+                 {
+         'Name': "Sagar Kamble",
+         'Place': "Mumbai",
+         'Role': "Risk & Policy",
+         'Current Company': ["L&T Finance"],
+         'In Current Company Since': "2024",
+         'Working Since': "2010",
+         'Past Companies': ["Paytm","Axis Bank","HDFC","ICICI","Infosys"],
+         'LinkedIn' : "https://linkedin.com/in/sagar-kamble-bb578316"
+         },
+                 {
+         'Name': "Aditya Khedikar",
+         'Place': "Bangalore",
+         'Role': "Head of Analytics",
+         'Current Company': ["Muthoot Group"],
+         'In Current Company Since': "2023",
+         'Working Since': "2014",
+         'Past Companies': ["IDFC","Bajaj Finserv","Hitachi Payments"],
+         'LinkedIn' : "https://linkedin.com/in/adityakhedikar"
+         },
+        {
+        'Name': "Aman Kumar",
+        'Place': "Kolkata",
+        'Role': "Risk Analyst",
+        'Current Company': ["mPokett"],
+        'In Current Company Since': "2023",
+        'Working Since': "2023",
+        'Past Companies': [""],
+        'LinkedIn' : "https://linkedin.com/in/aman-kumar-bba9081a5"
+        },
+        {
+        'Name': "Namrata Kumari",
+        'Place': "Kolkata",
+        'Role': "Risk analyst",
+        'Current Company': ["mPokett"],
+        'In Current Company Since': "2024",
+        'Working Since': "2024",
+        'Past Companies': [""],
+        'LinkedIn' : "https://linkedin.com/in/namrata-kumari-771a47219"
+        },
+        
+        {
+        'Name': "Shreya Mahendran",
+        'Place': "Mumbai",
+        'Role': "Marketing Analytics",
+        'Current Company': ["IDFC"],
+        'In Current Company Since': "2021",
+        'Working Since': "2021",
+        'Past Companies': [""],
+        'LinkedIn' : "https://www.linkedin.com/in/shreya-mahendran-67a296191"
+        },
+        
+        {
+        'Name': "Pratik kr Gupta",
+        'Place': "Gurgaon",
+        'Role': "Growth & Partnerships",
+        'Current Company': ["Indusind Bank"],
+        'In Current Company Since': "2024",
+        'Working Since': "2017",
+        'Past Companies': ["Paytm","Tata Steel"],
+        'LinkedIn' : "https://www.linkedin.com/in/pratik-kr-gupta"
+        },
+        
+        {
+        'Name': "Mukesh Jangid",
+        'Place': "Mumbai",
+        'Role': "Director - Sales",
+        'Current Company': ["PayU"],
+        'In Current Company Since': "2020",
+        'Working Since': "2009",
+        'Past Companies': ["Appco","CRISIL","IndusInd Bank","Euromoney","CreditVidya"],
+        'LinkedIn' : "https://www.linkedin.com/in/mukesh-jangid-95076317b"
+        }
+,
+        
+        {
+        'Name': "Akash Chauhan",
+        'Place': "Bangalore",
+        'Role': "Credit Risk & DS",
+        'Current Company': ["mPokket"],
+        'In Current Company Since': "2024",
+        'Working Since': "2017",
+        'Past Companies': ["Paytm", "CRED", "IndusInd Bank", "EY", "Fractal Analytics"],
+        'LinkedIn' : "https://www.linkedin.com/in/akash-chauhan-997457a8"
+        }
+,
+        
+        {
+        'Name': "Arif Khan",
+        'Place': "Mumbai",
+        'Role': "Lending Analytics",
+        'Current Company': ["IDFC"],
+        'In Current Company Since': "2021",
+        'Working Since': "2021",
+        'Past Companies': [""],
+        'LinkedIn' : "https://www.linkedin.com/in/arif-khan-93686512a"
+        }
+
+        ,
+        
+        {
+        'Name': "Sachidananda Hota",
+        'Place': "Mumbai",
+        'Role': "Data Science, Fraud & Risk",
+        'Current Company': ["NSDL Payments Bank"],
+        'In Current Company Since': "2025",
+        'Working Since': "2016",
+        'Past Companies': ["Ashok Leyland"],
+        'LinkedIn' : "https://www.linkedin.com/in/sachidananda-hota-27ba4187"
+        }
+,
+        
+        {
+        'Name': "Akash Sharma",
+        'Place': "Mumbai",
+        'Role': "Data Science, Credit Risk Analytics",
+        'Current Company': ["ABHFL"],
+        'In Current Company Since': "2022",
+        'Working Since': "2022",
+        'Past Companies': [""],
+        'LinkedIn' : ""
+        }
+,
+        
+        {
+        'Name': "Anurag Goyal",
+        'Place': "Hyderabad ",
+        'Role': "Data Science, Analytics",
+        'Current Company': ["Franklin Templeton"],
+        'In Current Company Since': "2025",
+        'Working Since': "2020",
+        'Past Companies': ["Bajaj Finance","IDFC"],
+        'LinkedIn' : "https://www.linkedin.com/in/anurag-goyal-339360153"
+        }
+,
+        
+        {
+        'Name': "Danish Hussain",
+        'Place': "Bangalore",
+        'Role': "Data Science",
+        'Current Company': ["Oportun"],
+        'In Current Company Since': "2025",
+        'Working Since': "2018",
+        'Past Companies': ["Cars24", "Quantium", "Decision Point"],
+        'LinkedIn' : "https://www.linkedin.com/in/mdanishhussain"
+        }
+,
+        {
+        'Name': "Reia Natu",
+        'Place': "Mumbai",
+        'Role': "Marketing Analytics & Digital Acquisition",
+        'Current Company': ["IDFC"],
+        'In Current Company Since': "2022",
+        'Working Since': "2020",
+        'Past Companies': ["ZS", "University of Queensland"],
+        'LinkedIn' : "https://www.linkedin.com/in/reia-natu-59638b31a"
+        }
+,
+        {
+        'Name': "Ankit Vardhan",
+        'Place': "Bangalore",
+        'Role': "Credit Risk Analytics & Policy",
+        'Current Company': ["Credit Saison"],
+        'In Current Company Since': "2024",
+        'Working Since': "2011",
+        'Past Companies': ["SMFG", "Groww", "Standard Chartered", "HSBC", "Fractal"],
+        'LinkedIn' : "https://www.linkedin.com/in/ankit-vardhan-77a48841"
+        }
+,
+        {
+        'Name': "Raghava",
+        'Place': "Bangalore",
+        'Role': "PL Underwriting Credit Strategy",
+        'Current Company': ["Navi"],
+        'In Current Company Since': "2021",
+        'Working Since': "2018",
+        'Past Companies': ["Tredence Analytics", "Snapdeal"],
+        'LinkedIn' : "https://www.linkedin.com/in/raghava-gautam-1408"
+        }
+,
+        {
+        'Name': "Priyanka Agrawal",
+        'Place': "Mumbai",
+        'Role': "VP - Credit and Portfolio",
+        'Current Company': ["Citi"],
+        'In Current Company Since': "2022",
+        'Working Since': "2013",
+        'Past Companies': ["ICICI"],
+        'LinkedIn' : "https://www.linkedin.com/in/priyanka-agrawal-a223b136"
+        }
+,
+        {
+        'Name': "Geetika Bansal",
+        'Place': "Bangalore",
+        'Role': "Data Science",
+        'Current Company': ["kreditbee"],
+        'In Current Company Since': "2025",
+        'Working Since': "2014",
+        'Past Companies': ["Experian", "Visa" , "Freo", "PWC"],
+        'LinkedIn' : "https://www.linkedin.com/in/geetika-bansal-0bbb14b5"
+        }
+,
+        {
+        'Name': "Nakul Jain",
+        'Place': "Delhi",
+        'Role': "Data science",
+        'Current Company': ["Course5 Intelligence"],
+        'In Current Company Since': "2024",
+        'Working Since': "2017",
+        'Past Companies': ["GroupM", "Axtria", "Eversana"],
+        'LinkedIn' : "https://www.linkedin.com/in/nakul-jain-43250266"
+        }
+,
+                {
+        'Name': "Pradhyumat Shah",
+        'Place': "Mumbai",
+        'Role': "Credit Risk Modeller",
+        'Current Company': ["Piramal Finance"],
+        'In Current Company Since': "2022",
+        'Working Since': "2014",
+        'Past Companies': ["IIFL","Infosys","Capgemini"],
+        'LinkedIn' : "https://www.linkedin.com/in/pradhyumatshah/"
+        }
+
+        ,
+                {
+        'Name': "Souvik Das",
+        'Place': "Gurgaon",
+        'Role': "Risk Analytics & Portfolio",
+        'Current Company': ["Cars24"],
+        'In Current Company Since': "2023",
+        'Working Since': "2018",
+        'Past Companies': ["Paytm", "TCS"],
+        'LinkedIn' : "https://www.linkedin.com/in/sou-vik-das"
+        }
+
+        ,
+                {
+        'Name': "Meghna Shekhar",
+        'Place': "Gurgaon",
+        'Role': "Data Science & Risk",
+        'Current Company': ["Cars24"],
+        'In Current Company Since': "2024",
+        'Working Since': "2022",
+        'Past Companies': ["FinBox"],
+        'LinkedIn' : "http://linkedin.com/in/meghnashekhar"
+        },
+
+        {
+        'Name': "Punya Purnima",
+        'Place': "Mumbai",
+        'Role': "Data Analyst",
+        'Current Company': ["IDFC"],
+        'In Current Company Since': "2022",
+        'Working Since': "2022",
+        'Past Companies': [""],
+        'LinkedIn' : "https://www.linkedin.com/in/punya-purnima-017944211"
+        },
+
+        {
+        'Name': "Dipayan Basu",
+        'Place': "Mumbai",
+        'Role': "Product Manager",
+        'Current Company': ["Data Sutram"],
+        'In Current Company Since': "2022",
+        'Working Since': "2022",
+        'Past Companies': [""],
+        'LinkedIn' : "https://www.linkedin.com/in/dipayan-basu-9a7964173"
+        }
+,
+        
+        {
+        'Name': "Pratyush Kumar Sahu",
+        'Place': "Chennai",
+        'Role': "Senior Risk Consultant",
+        'Current Company': ["NuLogic"],
+        'In Current Company Since': "2024",
+        'Working Since': "2018",
+        'Past Companies': ["1st Financial Bank","Aptean","Exilent"],
+        'LinkedIn' : "https://www.linkedin.com/in/psahu007"
+        }
+,
+        
+        {
+        'Name': "Chiranjeeb Mahi",
+        'Place': "Bangalore",
+        'Role': "Consultant Risk & BI",
+        'Current Company': ["NuLogic"],
+        'In Current Company Since': "2024",
+        'Working Since': "2021",
+        'Past Companies': ["DBS Bank","Paytm"],
+        'LinkedIn' : "https://www.linkedin.com/in/chiranjeebmahi"
+        }
+,
+        
+        {
+        'Name': "Yashika Gupta",
+        'Place': "Delhi",
+        'Role': "Lead - Credit Risk, Policy & Ops",
+        'Current Company': ["Spice Money"],
+        'In Current Company Since': "2023",
+        'Working Since': "2006",
+        'Past Companies': ["HDFC", "Incred", "Paytm"],
+        'LinkedIn' : "https://www.linkedin.com/in/yashika-gupta-70891514"
+        }
+,
+        
+        {
+        'Name': "Aayush Maru",
+        'Place': "Mumbai",
+        'Role': "Data Scientist - Risk Consulting",
+        'Current Company': ["PwC"],
+        'In Current Company Since': "2025",
+        'Working Since': "2022",
+        'Past Companies': ["Think360"],
+        'LinkedIn' : "https://www.linkedin.com/in/aayushmaru"
+        }
+,
+        
+        {
+        'Name': "Viraj",
+        'Place': "Pune",
+        'Role': "AVP - Analytics",
+        'Current Company': ["Bajaj Allianz"],
+        'In Current Company Since': "2024",
+        'Working Since': "2015",
+        'Past Companies': ["Bajaj Finance", "IndusInd Bank"],
+        'LinkedIn' : "https://www.linkedin.com/in/virajshirsekar1994"
+        }
+        ,
+                
+        {
+        'Name': "Prashant Kumar",
+        'Place': "Mumbai",
+        'Role': "Data Science",
+        'Current Company': ["BSE"],
+        'In Current Company Since': "2025",
+        'Working Since': "2022",
+        'Past Companies': ["Tata Capital", "3 Analytics"],
+        'LinkedIn' : "https://www.linkedin.com/in/prashant-k-1249231a7"
+        }
+        ,
+        
+        {
+        'Name': "Harshal Jadhav",
+        'Place': "Mumbai",
+        'Role': "Product Manager",
+        'Current Company': ["IDFC"],
+        'In Current Company Since': "2023",
+        'Working Since': "2017",
+        'Past Companies': ["FANUC"],
+        'LinkedIn' : "https://www.linkedin.com/in/harshal-jadhav-34616911b"
+        }
+,
+        
+        {
+        'Name': "Aparajita Patra",
+        'Place': "Mumbai",
+        'Role': "Data Analyst & Strategy Manager",
+        'Current Company': ["IDFC"],
+        'In Current Company Since': "2020",
+        'Working Since': "2018",
+        'Past Companies': ["UNICEF"],
+        'LinkedIn' : "https://www.linkedin.com/in/aparajita-patra-649050118/"
+        }
+
+,
+        
+        {
+        'Name': "Sapna Bhat",
+        'Place': "Mumbai",
+        'Role': "Credit Risk and Portfolio Analytics",
+        'Current Company': ["Savii"],
+        'In Current Company Since': "2024",
+        'Working Since': "2020",
+        'Past Companies': ["IDFC","Citi"],
+        'LinkedIn' : "https://www.linkedin.com/in/sapna-bhat-223031169"
+        }
+,
+         {
+         'Name': "Leeva Jain",
+         'Place': "Bangalore",
+         'Role': "Credit Strategy Manager",
+         'Current Company': ["Navi"],
+         'In Current Company Since': "2021",
+         'Working Since': "2017",
+         'Past Companies': ["Profectus Capital", "Sammaan Capital"],
+         'LinkedIn' : "https://www.linkedin.com/in/ca-leeva-jain-81969ab9"
+         }
+,
+         {
+         'Name': "Swati Kondalkar",
+         'Place': "Pune",
+         'Role': "Data Analytics Manager",
+         'Current Company': ["Magnit Global"],
+         'In Current Company Since': "2019",
+         'Working Since': "2016",
+         'Past Companies': ["IBM"],
+         'LinkedIn' : "https://www.linkedin.com/in/swati-kondalkar-261b3499"
+         }
+,
+         {
+         'Name': "Sagar",
+         'Place': "Gurgaon",
+         'Role': "Risk & Analytics - Sr. Consultant",
+         'Current Company': ["EXL"],
+         'In Current Company Since': "2024",
+         'Working Since': "2017",
+         'Past Companies': ["Cars24", "Clix Capital", "Genpact","Capgemini"],
+         'LinkedIn' : "https://www.linkedin.com/in/sagar-432b30145"
+         }
+,
+         {
+         'Name': "Jagmandeep Singh",
+         'Place': "Gurgaon",
+         'Role': "Credit Risk Manager",
+         'Current Company': ["Deloitte"],
+         'In Current Company Since': "2025",
+         'Working Since': "2016",
+         'Past Companies': ["Axis", "Paytm", "Navi", "Kissht"],
+         'LinkedIn' : "https://www.linkedin.com/in/jagmandeep-singh-89b83b104"
+         }
+,
+         {
+         'Name': "Chinmay Agarwal",
+         'Place': "Bangalore",
+         'Role': "Business Analyst",
+         'Current Company': ["Kiwi"],
+         'In Current Company Since': "2023",
+         'Working Since': "2021",
+         'Past Companies': ["Indus Insights"],
+         'LinkedIn' : "https://www.linkedin.com/in/agarwalchinmay99/"
+         }
+        ,
+        {
+        'Name': "Devanshi Kulshreshtha",
+        'Place': "Bangalore",
+        'Role': "Lead - People Science & Productivity",
+        'Current Company': ["Piramal Finance"],
+        'In Current Company Since': "2025",
+        'Working Since': "2018",
+        'Past Companies': ["Litmass Analytics","Ckuens Analytics"],
+        'LinkedIn' : "https://www.linkedin.com/in/devanshi-kulshreshtha"
+        }
+        ,
+        {
+        'Name': "Carthic Kameshwaran",
+        'Place': "Mumbai",
+        'Role': "Sr. Director FRM Solutions",
+        'Current Company': ["Wibmo"],
+        'In Current Company Since': "2025",
+        'Working Since': "2004",
+        'Past Companies': ["Oracle","Kotak","ICICI","Persistent Systems","BureauID"],
+        'LinkedIn' : "https://www.linkedin.com/in/carthic"
+        }
+
+       
+       ];
 
         const directoryContainer = document.getElementById('people-directory');
         const searchInput = document.getElementById('searchInput');
