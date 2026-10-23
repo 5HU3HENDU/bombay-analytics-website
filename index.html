@@ -1,214 +1,168 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bombay Analytics — India's Community for Credit & Lending Analytics Professionals</title>
 <meta name="description" content="Bombay Analytics is India's community for credit & lending analytics professionals — network, discuss ideas, trends, methods and best practices with the right people.">
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        ink: '#0B2447',
-        inkdeep: '#071831',
-        amber: '#E9A13B',
-        amberdark: '#C77F1F',
-        paper: '#FAF7F1',
-        cardline: '#E7DFD2'
-      },
-      fontFamily: {
-        display: ['Fraunces', 'serif'],
-        body: ['Inter', 'sans-serif']
-      }
-    }
-  }
-}
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  body { font-family: 'Inter', sans-serif; background: #FAF7F1; color: #0B2447; }
-  .font-display { font-family: 'Fraunces', serif; }
-  @media (max-width: 767px) { body { padding-bottom: 92px; } }
+  :root { --ink:#141310; --paper:#FBF8F0; --line:#CFC6AF; }
+  body { font-family:'Lora', Georgia, serif; background:#EFE9DA; color:var(--ink); }
+  .masthead { font-family:'Playfair Display', serif; }
+  .headline { font-family:'Playfair Display', serif; }
+  .kicker { font-family:'Inter', sans-serif; letter-spacing:.26em; }
+  .sans { font-family:'Inter', sans-serif; }
+  .rule-double { border-top:3px solid var(--ink); position:relative; }
+  .rule-double::after { content:''; position:absolute; top:2px; left:0; right:0; border-top:1px solid var(--ink); }
+  .dropcap::first-letter { font-family:'Playfair Display', serif; font-weight:900; font-size:3.3em; float:left; line-height:.84; padding-right:.12em; padding-top:.04em; }
+  .cols2 { column-count:1; } @media(min-width:768px){ .cols2 { column-count:2; column-gap:2.2rem; column-rule:1px solid var(--line); } }
+  .cols3 { column-count:1; } @media(min-width:768px){ .cols3 { column-count:3; column-gap:2rem; column-rule:1px solid var(--line); } }
+  @media (max-width:767px){ body { padding-bottom:64px; } }
 </style>
 </head>
-<body class="antialiased">
+<body class="py-4 md:py-8 px-3 md:px-4">
 
-<!-- ===== Top navigation ===== -->
-<header class="sticky top-0 z-40 bg-paper/95 backdrop-blur border-b border-cardline">
-  <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
-    <a href="./" class="flex items-center gap-2 font-display font-bold text-xl tracking-tight">
-      <span class="text-2xl">🌉</span> Bombay Analytics
-    </a>
-    <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium">
-      <a href="./" class="font-semibold border-b-2 border-amber pb-0.5">Home</a>
-      <a href="people/" class="text-ink/70 hover:text-ink transition">People</a>
-      <a href="https://forms.gle/aks9dCARoVCUeS3RA" target="_blank" rel="noopener" class="bg-amber hover:bg-amberdark text-inkdeep font-semibold px-5 py-2 rounded-full transition">Join</a>
-    </nav>
-    <a href="https://forms.gle/aks9dCARoVCUeS3RA" target="_blank" rel="noopener" class="md:hidden bg-amber text-inkdeep font-semibold px-4 py-1.5 rounded-full text-sm">Join</a>
-  </div>
-</header>
+<div class="max-w-4xl mx-auto bg-[#FBF8F0] shadow-xl border border-[#D8D0BA] px-5 md:px-10 py-6 md:py-8">
 
-<!-- ===== Hero ===== -->
-<section class="max-w-6xl mx-auto px-5 pt-14 pb-10 md:pt-20 md:pb-14 text-center">
-  <div class="inline-flex items-center gap-2 bg-white border border-cardline rounded-full px-4 py-1.5 text-[13px] font-medium text-ink/70">
-    <i data-lucide="users" class="w-4 h-4 text-amberdark"></i> 600+ members across India
+  <!-- Dateline -->
+  <div class="flex justify-between kicker text-[10px] md:text-[11px] uppercase border-b border-[#141310] pb-2">
+    <span>Est. for the lending tribe</span>
+    <span class="hidden sm:inline">Mumbai — Financial Capital of India</span>
+    <span>Members 600+</span>
   </div>
-  <h1 class="font-display font-bold text-[40px] leading-[1.08] md:text-6xl md:leading-[1.05] mt-6 max-w-3xl mx-auto">
-    India's community for credit &amp; lending analytics professionals
-  </h1>
-  <p class="mt-5 text-lg text-ink/70 max-w-2xl mx-auto">
-    A platform where lending analytics people come together to network, discuss ideas, trends, methods and best practices from their day-to-day work.
-  </p>
-  <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-    <a href="https://forms.gle/aks9dCARoVCUeS3RA" target="_blank" rel="noopener" class="w-full sm:w-auto bg-amber hover:bg-amberdark text-inkdeep font-semibold px-8 py-3.5 rounded-full transition text-center">Join the community</a>
-    <a href="people/" class="w-full sm:w-auto bg-white border border-ink/20 hover:border-ink/50 font-semibold px-8 py-3.5 rounded-full transition text-center">Meet the people</a>
-  </div>
-  <div class="mt-10 flex flex-wrap justify-center gap-2">
-    <span class="bg-white border border-cardline rounded-full px-4 py-1.5 text-sm font-medium">Niche community</span>
-    <span class="bg-white border border-cardline rounded-full px-4 py-1.5 text-sm font-medium">Real conversations</span>
-    <span class="bg-white border border-cardline rounded-full px-4 py-1.5 text-sm font-medium">Right people</span>
-    <span class="bg-white border border-cardline rounded-full px-4 py-1.5 text-sm font-medium">Career growth</span>
-    <span class="bg-white border border-cardline rounded-full px-4 py-1.5 text-sm font-medium">No noise</span>
-    <span class="bg-white border border-cardline rounded-full px-4 py-1.5 text-sm font-medium">No generic finance talk</span>
-  </div>
-</section>
 
-<!-- ===== This is for you ===== -->
-<section class="max-w-6xl mx-auto px-5 py-10">
-  <h2 class="font-display font-bold text-3xl md:text-4xl">This is for you, if you work in…</h2>
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-7">
-    <div class="bg-white border border-cardline rounded-2xl p-6">
-      <div class="w-11 h-11 rounded-xl bg-amber/20 flex items-center justify-center"><i data-lucide="shield-check" class="w-5 h-5 text-amberdark"></i></div>
-      <h3 class="font-semibold text-lg mt-4">Credit Risk Underwriting</h3>
-      <p class="text-ink/65 mt-1.5 text-[15px]">Policy, scorecards and the decisions behind every approval.</p>
-    </div>
-    <div class="bg-white border border-cardline rounded-2xl p-6">
-      <div class="w-11 h-11 rounded-xl bg-amber/20 flex items-center justify-center"><i data-lucide="bar-chart-3" class="w-5 h-5 text-amberdark"></i></div>
-      <h3 class="font-semibold text-lg mt-4">Risk Analytics</h3>
-      <p class="text-ink/65 mt-1.5 text-[15px]">Models, monitoring and insights across the lending lifecycle.</p>
-    </div>
-    <div class="bg-white border border-cardline rounded-2xl p-6">
-      <div class="w-11 h-11 rounded-xl bg-amber/20 flex items-center justify-center"><i data-lucide="phone-call" class="w-5 h-5 text-amberdark"></i></div>
-      <h3 class="font-semibold text-lg mt-4">Collections Analytics</h3>
-      <p class="text-ink/65 mt-1.5 text-[15px]">Recoveries, delinquency trends and collections strategy.</p>
-    </div>
-    <div class="bg-white border border-cardline rounded-2xl p-6">
-      <div class="w-11 h-11 rounded-xl bg-amber/20 flex items-center justify-center"><i data-lucide="pie-chart" class="w-5 h-5 text-amberdark"></i></div>
-      <h3 class="font-semibold text-lg mt-4">Portfolio Management</h3>
-      <p class="text-ink/65 mt-1.5 text-[15px]">Performance, segmentation and growth of lending portfolios.</p>
-    </div>
-    <div class="bg-white border border-cardline rounded-2xl p-6">
-      <div class="w-11 h-11 rounded-xl bg-amber/20 flex items-center justify-center"><i data-lucide="target" class="w-5 h-5 text-amberdark"></i></div>
-      <h3 class="font-semibold text-lg mt-4">Lending Strategy</h3>
-      <p class="text-ink/65 mt-1.5 text-[15px]">Where risk appetite meets business growth.</p>
-    </div>
-    <div class="bg-ink text-white rounded-2xl p-6 flex flex-col justify-center">
-      <p class="text-[15px] text-white/80">…at a</p>
-      <p class="font-display font-semibold text-xl mt-1 leading-snug">Bank, NBFC, Fintech<br>or Credit Bureau</p>
-    </div>
+  <!-- Masthead -->
+  <div class="text-center pt-5">
+    <h1 class="masthead font-black text-[40px] md:text-[62px] leading-none tracking-tight">Bombay Analytics</h1>
+    <p class="italic mt-2.5 text-[15px] md:text-base text-neutral-700">India's community for credit &amp; lending analytics professionals</p>
   </div>
-</section>
 
-<!-- ===== Why are we doing this ===== -->
-<section class="max-w-6xl mx-auto px-5 py-10">
-  <div class="bg-white border border-cardline rounded-3xl p-7 md:p-10">
-    <h2 class="font-display font-bold text-3xl md:text-4xl">Why are we doing this?</h2>
-    <p class="mt-4 text-ink/75 text-[17px] leading-relaxed max-w-3xl">
-      Credit risk sits at the intersection of <strong>data science, statistics, finance and macro &amp; micro-economic policy</strong> — and it's evolving fast. Yet most knowledge stays inside company walls, hiring happens through cold applications, and professionals rarely know who else is solving the same problems. We're trying to change that.
+  <!-- Index / navigation -->
+  <nav class="rule-double mt-5">
+    <div class="flex items-center justify-center gap-8 md:gap-12 pt-3 pb-1 kicker text-[11px] md:text-xs uppercase font-semibold">
+      <a href="./" class="border-b-2 border-[#141310] pb-0.5">Home</a>
+      <a href="people/" class="text-neutral-500 hover:text-[#141310] transition">People</a>
+      <a href="https://forms.gle/aks9dCARoVCUeS3RA" target="_blank" rel="noopener" class="bg-[#141310] text-[#FBF8F0] px-4 py-1.5 -my-1 hover:bg-neutral-800 transition">Join</a>
+    </div>
+  </nav>
+  <div class="border-b border-[#141310] mt-2"></div>
+
+  <!-- Ticker strip -->
+  <div class="flex flex-wrap gap-x-6 gap-y-1 py-2.5 border-b border-[#CFC6AF] kicker text-[10px] md:text-[11px] uppercase text-neutral-600">
+    <span>Niche community</span><span>Real conversations</span><span>Right people</span>
+    <span>Career growth</span><span>Noise: <strong class="text-[#141310]">Nil</strong></span>
+    <span>Generic finance talk: <strong class="text-[#141310]">Suspended</strong></span>
+  </div>
+
+  <!-- Lead story -->
+  <article class="pt-8">
+    <p class="kicker text-[11px] uppercase text-center text-neutral-500">The Lead Story</p>
+    <h2 class="headline font-extrabold text-[32px] md:text-[46px] leading-[1.1] text-center mt-3">A Community Where Lending<br class="hidden md:block"> Analysts Actually Talk</h2>
+    <p class="text-center italic text-neutral-600 mt-3 text-[15px]">Our aim, stated plainly</p>
+    <p class="mt-6 text-[17px] leading-[1.8] text-justify max-w-3xl mx-auto">
+      <span class="dropcap">Our</span> aim is to empower lending analytics teams &amp; the community by providing a platform where people can come together and <strong>network, discuss ideas, trends, methods and best practices</strong> used in their day-to-day work. Not another noisy group. Not generic finance talk. Just the right people, having real conversations about the work only they understand.
     </p>
-    <ul class="mt-6 grid md:grid-cols-2 gap-x-8 gap-y-3 text-[15.5px] text-ink/80 max-w-4xl">
-      <li class="flex gap-2.5"><i data-lucide="check-circle-2" class="w-5 h-5 text-amberdark shrink-0 mt-0.5"></i>To bring people closer in the niche of credit analytics.</li>
-      <li class="flex gap-2.5"><i data-lucide="check-circle-2" class="w-5 h-5 text-amberdark shrink-0 mt-0.5"></i>The domain is evolving, at the intersection of tech, analytics and economic trends.</li>
-      <li class="flex gap-2.5"><i data-lucide="check-circle-2" class="w-5 h-5 text-amberdark shrink-0 mt-0.5"></i>Connecting the right people leads to better portfolio &amp; risk management.</li>
-      <li class="flex gap-2.5"><i data-lucide="check-circle-2" class="w-5 h-5 text-amberdark shrink-0 mt-0.5"></i>Networking leads to better hiring and career growth for everyone.</li>
-    </ul>
-    <div class="mt-8 bg-amber/15 border-l-4 border-amber rounded-r-2xl p-5 font-display text-lg md:text-xl font-semibold leading-snug">
-      That's why we are building this platform around a community of people from the lending analytics domain.
-    </div>
-  </div>
-</section>
+  </article>
 
-<!-- ===== Why Bombay ===== -->
-<section class="max-w-6xl mx-auto px-5 py-6">
-  <div class="bg-ink text-white rounded-3xl p-7 md:p-10 flex flex-col md:flex-row md:items-center gap-5">
-    <div class="text-4xl">🌉</div>
-    <div>
-      <h2 class="font-display font-bold text-2xl md:text-3xl">Why "Bombay"?</h2>
-      <p class="mt-2 text-white/80 text-[16.5px] max-w-2xl">Bombay welcomes everyone — and it's the financial capital of India. It's just in the name though: our members are spread across <strong class="text-white">all of India</strong>.</p>
+  <!-- This is for you -->
+  <section class="mt-10 border-2 border-[#141310] p-5 md:p-7">
+    <p class="kicker text-[11px] uppercase text-center">— This Edition Is For You, If You Work In —</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-5 mt-6">
+      <div><h3 class="headline font-bold text-xl border-b border-[#CFC6AF] pb-1.5">Credit Risk Underwriting</h3><p class="text-[14.5px] mt-2 leading-relaxed text-neutral-700">Policy, scorecards and the decisions behind every approval and decline.</p></div>
+      <div><h3 class="headline font-bold text-xl border-b border-[#CFC6AF] pb-1.5">Risk Analytics</h3><p class="text-[14.5px] mt-2 leading-relaxed text-neutral-700">Models, monitoring and insights across the lending lifecycle.</p></div>
+      <div><h3 class="headline font-bold text-xl border-b border-[#CFC6AF] pb-1.5">Collections Analytics</h3><p class="text-[14.5px] mt-2 leading-relaxed text-neutral-700">Recoveries, delinquency trends and collections optimisation.</p></div>
+      <div><h3 class="headline font-bold text-xl border-b border-[#CFC6AF] pb-1.5">Portfolio Management</h3><p class="text-[14.5px] mt-2 leading-relaxed text-neutral-700">Performance, segmentation and growth of lending portfolios.</p></div>
+      <div><h3 class="headline font-bold text-xl border-b border-[#CFC6AF] pb-1.5">Lending Strategy</h3><p class="text-[14.5px] mt-2 leading-relaxed text-neutral-700">Where risk appetite meets business growth.</p></div>
+      <div><h3 class="headline font-bold text-xl border-b border-[#CFC6AF] pb-1.5">…at a Bank, NBFC, Fintech or Bureau</h3><p class="text-[14.5px] mt-2 leading-relaxed text-neutral-700">If that is your desk, this is your paper.</p></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== Who are we ===== -->
-<section class="max-w-6xl mx-auto px-5 py-10">
-  <h2 class="font-display font-bold text-3xl md:text-4xl">Who are we?</h2>
-  <div class="grid md:grid-cols-2 gap-4 mt-7">
-    <div class="bg-white border border-cardline rounded-2xl p-6 flex gap-4">
-      <div class="w-14 h-14 rounded-full bg-ink text-white flex items-center justify-center font-display font-bold text-lg shrink-0">SS</div>
-      <div class="min-w-0">
-        <div class="flex items-center gap-2 flex-wrap">
-          <h3 class="font-semibold text-lg">Shubhendu Singh</h3>
-          <span class="bg-amber/25 text-amberdark text-xs font-semibold px-2.5 py-0.5 rounded-full">Community Lead</span>
+  <!-- Why are we doing this -->
+  <article class="mt-10">
+    <h2 class="headline font-extrabold text-3xl md:text-4xl">Why Are We Doing This?</h2>
+    <div class="cols2 mt-5 text-[15.5px] leading-[1.8] text-justify">
+      <p>Credit risk domain sits at the intersection of <strong>data science, statistics, finance and macro and micro-economic policies</strong> — and it's evolving fast.</p>
+      <p class="mt-4">Yet most knowledge stays inside company walls, hiring happens through cold applications, and professionals rarely know who else is solving the same problems. We're trying to change that:</p>
+      <ul class="mt-4 space-y-2.5 text-left">
+        <li>— To bring people closer in the niche of credit analytics.</li>
+        <li>— The domain is evolving and sits at the intersection of tech, analytics and economic trends.</li>
+        <li>— Connecting right people together will result in better portfolio &amp; risk management.</li>
+        <li>— Networking will lead to better hiring and career growth for everyone.</li>
+      </ul>
+    </div>
+    <blockquote class="mt-7 border-y-2 border-[#141310] py-4 headline italic font-semibold text-xl md:text-2xl text-center leading-snug">
+      "That's why we are building this platform around a community of people belonging to the lending analytics domain."
+    </blockquote>
+  </article>
+
+  <!-- Why Bombay + Who are we -->
+  <div class="grid md:grid-cols-5 gap-8 mt-10">
+    <section class="md:col-span-2">
+      <h2 class="headline font-extrabold text-2xl border-b-2 border-[#141310] pb-2">Why "Bombay"?</h2>
+      <p class="mt-3 text-[15.5px] leading-[1.75]">Bombay welcomes everyone, also it's the financial capital of India.</p>
+      <p class="mt-3 text-[15.5px] leading-[1.75]">It's just in the name. Our members are spread across <strong>India</strong>.</p>
+      <p class="text-4xl mt-4">🌉</p>
+    </section>
+    <section class="md:col-span-3">
+      <h2 class="headline font-extrabold text-2xl border-b-2 border-[#141310] pb-2">From the Editorial Desk</h2>
+      <div class="mt-4 space-y-5">
+        <div>
+          <p class="text-[16.5px]"><a href="https://in.linkedin.com/in/5hu3hendu" target="_blank" rel="noopener" class="font-bold underline decoration-1 underline-offset-4 hover:bg-[#141310] hover:text-[#FBF8F0] transition px-0.5">Shubhendu Singh</a> <span class="kicker text-[10px] uppercase bg-[#141310] text-[#FBF8F0] px-2 py-0.5 ml-1 align-middle">Community Lead</span></p>
+          <p class="text-[14.5px] text-neutral-700 mt-1 leading-relaxed">Working in Credit Risk Analytics domain since 2018, currently with Deloitte.</p>
         </div>
-        <p class="text-ink/65 text-[15px] mt-1">Working in Credit Risk Analytics since 2018, currently with Deloitte.</p>
-        <a href="https://in.linkedin.com/in/5hu3hendu" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-sm font-semibold mt-3 hover:text-amberdark transition"><i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn</a>
+        <div>
+          <p class="text-[16.5px]"><a href="https://www.linkedin.com/in/vridhhi-jaain-1b919122a/" target="_blank" rel="noopener" class="font-bold underline decoration-1 underline-offset-4 hover:bg-[#141310] hover:text-[#FBF8F0] transition px-0.5">Vridhhi Jaain</a> <span class="kicker text-[10px] uppercase border border-[#141310] px-2 py-0.5 ml-1 align-middle">Community Moderator</span></p>
+          <p class="text-[14.5px] text-neutral-700 mt-1 leading-relaxed">MBA from Delhi School of Economics, handling community growth and creative initiatives.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Classifieds -->
+  <section class="mt-10 border-2 border-[#141310] p-5 md:p-6">
+    <p class="kicker text-[11px] uppercase text-center">— Classifieds —</p>
+    <div class="grid md:grid-cols-2 gap-6 mt-4">
+      <div class="border-t border-[#141310] pt-3">
+        <p class="font-bold uppercase sans text-[13px] tracking-widest">Persons Directory</p>
+        <p class="text-[15px] leading-relaxed mt-1.5">600+ lending analytics professionals, listed and searchable. Banks, NBFCs, fintechs, bureaus — find your people.</p>
+        <a href="people/" class="inline-block mt-3 sans font-semibold text-sm underline underline-offset-4">Browse the People page →</a>
+      </div>
+      <div class="border-t border-[#141310] pt-3">
+        <p class="font-bold uppercase sans text-[13px] tracking-widest">Membership Invited</p>
+        <p class="text-[15px] leading-relaxed mt-1.5">Applications open to credit &amp; lending analytics professionals across India. One short form; we read every single one.</p>
+        <a href="https://forms.gle/aks9dCARoVCUeS3RA" target="_blank" rel="noopener" class="inline-block mt-3 bg-[#141310] text-[#FBF8F0] sans font-semibold text-sm px-5 py-2.5 hover:bg-neutral-800 transition">Apply to Join ↗</a>
       </div>
     </div>
-    <div class="bg-white border border-cardline rounded-2xl p-6 flex gap-4">
-      <div class="w-14 h-14 rounded-full bg-amber text-inkdeep flex items-center justify-center font-display font-bold text-lg shrink-0">VJ</div>
-      <div class="min-w-0">
-        <div class="flex items-center gap-2 flex-wrap">
-          <h3 class="font-semibold text-lg">Vridhhi Jaain</h3>
-          <span class="bg-amber/25 text-amberdark text-xs font-semibold px-2.5 py-0.5 rounded-full">Community Moderator</span>
-        </div>
-        <p class="text-ink/65 text-[15px] mt-1">MBA from Delhi School of Economics, handling community growth and creative initiatives.</p>
-        <a href="https://www.linkedin.com/in/vridhhi-jaain-1b919122a/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-sm font-semibold mt-3 hover:text-amberdark transition"><i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn</a>
-      </div>
+  </section>
+
+  <!-- Colophon -->
+  <footer class="mt-10">
+    <div class="rule-double"></div>
+    <div class="pt-4 flex flex-col md:flex-row items-center justify-between gap-2.5 text-[13px] text-neutral-600">
+      <p class="masthead font-bold text-[#141310] text-base">Bombay Analytics</p>
+      <p class="italic">India's community for credit &amp; lending analytics professionals</p>
+      <nav class="sans font-medium flex gap-5">
+        <a href="./" class="hover:text-[#141310]">Home</a>
+        <a href="people/" class="hover:text-[#141310]">People</a>
+        <a href="https://forms.gle/aks9dCARoVCUeS3RA" target="_blank" rel="noopener" class="hover:text-[#141310]">Join</a>
+      </nav>
     </div>
-  </div>
-</section>
+    <p class="text-center text-[12px] italic text-neutral-500 mt-3">Edited by the community, for the community · Printed on the web, read across India</p>
+  </footer>
+</div>
 
-<!-- ===== CTA ===== -->
-<section class="max-w-6xl mx-auto px-5 pb-14 pt-2 text-center">
-  <h2 class="font-display font-bold text-3xl md:text-4xl">Sound like your people?</h2>
-  <p class="mt-3 text-ink/70 text-lg">Fill the short form and we'll take it from there.</p>
-  <a href="https://forms.gle/aks9dCARoVCUeS3RA" target="_blank" rel="noopener" class="inline-block mt-6 bg-amber hover:bg-amberdark text-inkdeep font-semibold px-9 py-3.5 rounded-full transition">Join Bombay Analytics</a>
-</section>
-
-<!-- ===== Footer ===== -->
-<footer class="bg-inkdeep text-white/75">
-  <div class="max-w-6xl mx-auto px-5 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
-    <div class="flex items-center gap-2 text-white font-display font-semibold text-base"><span>🌉</span> Bombay Analytics</div>
-    <nav class="flex items-center gap-6">
-      <a href="./" class="hover:text-white transition">Home</a>
-      <a href="people/" class="hover:text-white transition">People</a>
-      <a href="https://forms.gle/aks9dCARoVCUeS3RA" target="_blank" rel="noopener" class="hover:text-white transition">Join</a>
-    </nav>
-    <p>India's community for credit &amp; lending analytics professionals</p>
-  </div>
-</footer>
-
-<!-- ===== Mobile bottom tab bar ===== -->
-<nav class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-cardline" style="padding-bottom: env(safe-area-inset-bottom);">
-  <div class="grid grid-cols-3 h-[72px]">
-    <a href="./" class="flex flex-col items-center justify-center gap-1 text-amberdark font-semibold text-xs">
-      <i data-lucide="home" class="w-6 h-6"></i> Home
-    </a>
-    <a href="people/" class="flex flex-col items-center justify-center gap-1 text-ink/60 text-xs font-medium">
-      <i data-lucide="users" class="w-6 h-6"></i> People
-    </a>
-    <a href="https://forms.gle/aks9dCARoVCUeS3RA" target="_blank" rel="noopener" class="flex flex-col items-center justify-center gap-1 text-ink/60 text-xs font-medium">
-      <span class="w-11 h-11 -mt-6 rounded-full bg-amber text-inkdeep flex items-center justify-center shadow-lg border-4 border-paper"><i data-lucide="plus" class="w-6 h-6"></i></span>
-      <span class="-mt-0.5">Join</span>
-    </a>
+<!-- Mobile bottom index bar -->
+<nav class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#141310] text-[#FBF8F0]" style="padding-bottom: env(safe-area-inset-bottom);">
+  <div class="grid grid-cols-3 h-14 kicker text-[10px] uppercase">
+    <a href="./" class="flex flex-col items-center justify-center gap-0.5 font-bold"><span class="text-base leading-none">🗞️</span>Home</a>
+    <a href="people/" class="flex flex-col items-center justify-center gap-0.5 text-white/60"><span class="text-base leading-none">📇</span>People</a>
+    <a href="https://forms.gle/aks9dCARoVCUeS3RA" target="_blank" rel="noopener" class="flex flex-col items-center justify-center gap-0.5 text-white/60"><span class="text-base leading-none">✍️</span>Join</a>
   </div>
 </nav>
 
-<script>lucide.createIcons();</script>
 </body>
 </html>
