@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge Base — Bombay Analytics</title>
+<meta name="description" content="Practical credit-risk analysis guides from Bombay Analytics, explained with data, visualisations and summary tables.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#141310; --line:#CFC6AF; }
+  body { font-family:'Lora', Georgia, serif; background:#EFE9DA; color:var(--ink); }
+  .masthead,.headline { font-family:'Playfair Display', serif; }
+  .kicker,.sans { font-family:'Inter', sans-serif; }
+  .kicker { letter-spacing:.26em; }
+  .rule-double { border-top:3px solid var(--ink); position:relative; }
+  .rule-double::after { content:''; position:absolute; top:2px; left:0; right:0; border-top:1px solid var(--ink); }
+  @media (max-width:767px){ body { padding-bottom:64px; } }
+</style>
+</head>
+<body class="py-4 md:py-8 px-3 md:px-4">
+<div class="max-w-4xl mx-auto bg-[#FBF8F0] shadow-xl border border-[#D8D0BA] px-5 md:px-10 py-6 md:py-8">
+
+  <div class="text-center pt-3">
+    <a href="../" class="masthead font-black text-[34px] md:text-[50px] leading-none tracking-tight">🌉 Bombay Analytics</a>
+    <p class="mt-3 text-[15px] md:text-base text-neutral-700">India's Community for Credit &amp; Lending Analytics Professionals</p>
+  </div>
+
+  <nav class="rule-double mt-6">
+    <div class="flex items-center justify-center gap-7 md:gap-10 pt-3 pb-1 kicker text-[10px] md:text-xs uppercase font-semibold">
+      <a href="../" class="text-neutral-500 hover:text-[#141310] transition">Home</a>
+      <a href="./" class="border-b-2 border-[#141310] pb-0.5">Knowledge Base</a>
+      <a href="https://chat.whatsapp.com/L8t2NUmdIveDrhwUnQ9xU5" target="_blank" rel="noopener" class="bg-[#141310] text-[#FBF8F0] px-4 py-1.5 -my-1 hover:bg-neutral-800 transition">Join</a>
+    </div>
+  </nav>
+  <div class="border-b border-[#141310] mt-2"></div>
+
+  <main class="pt-9">
+    <p class="kicker text-[11px] uppercase text-neutral-500">Knowledge Base</p>
+    <h1 class="headline font-extrabold text-4xl md:text-5xl leading-tight mt-3">Credit-risk analysis,<br>explained with data.</h1>
+    <p class="mt-4 text-[16.5px] leading-relaxed text-neutral-700 max-w-2xl">Each guide uses one synthetic dataset, clear visualisations and summary tables — so the method is easy to follow and easy to verify.</p>
+
+    <section class="mt-9 border-2 border-[#141310] p-5 md:p-7">
+      <div class="flex flex-wrap items-start justify-between gap-4">
+        <div class="max-w-2xl">
+          <p class="kicker text-[10px] uppercase text-neutral-500">Guide 01 · Funnel Monitoring</p>
+          <h2 class="headline font-extrabold text-3xl mt-2">Approval Rate Analysis</h2>
+          <p class="mt-3 text-[15.5px] leading-relaxed text-neutral-700">Track the overall approval rate, inspect incoming and approved population shifts, compare age and salary segments, and read reject-reason trends.</p>
+        </div>
+        <span class="sans text-xs font-semibold border border-[#141310] px-3 py-1.5">Interactive</span>
+      </div>
+      <ul class="mt-5 flex flex-wrap gap-2 sans text-[13px]">
+        <li class="bg-white border border-[#CFC6AF] px-3 py-1.5">Overall metrics</li>
+        <li class="bg-white border border-[#CFC6AF] px-3 py-1.5">Charts + tables</li>
+        <li class="bg-white border border-[#CFC6AF] px-3 py-1.5">Age &amp; salary cuts</li>
+        <li class="bg-white border border-[#CFC6AF] px-3 py-1.5">Reject reasons</li>
+      </ul>
+      <a href="approval-rate-analysis/" class="inline-block mt-6 bg-[#141310] text-[#FBF8F0] sans font-semibold text-sm px-6 py-3 hover:bg-neutral-800 transition">Read the guide →</a>
+    </section>
+  </main>
+
+  <footer class="mt-12">
+    <div class="rule-double"></div>
+    <div class="pt-4 flex flex-col md:flex-row items-center justify-between gap-2.5 text-[13px] text-neutral-600">
+      <p class="masthead font-bold text-[#141310] text-base">🌉 Bombay Analytics</p>
+      <p>India's Community for Credit &amp; Lending Analytics Professionals</p>
+      <nav class="sans font-medium flex gap-5">
+        <a href="../" class="hover:text-[#141310]">Home</a>
+        <a href="./" class="hover:text-[#141310]">Knowledge Base</a>
+        <a href="https://chat.whatsapp.com/L8t2NUmdIveDrhwUnQ9xU5" target="_blank" rel="noopener" class="hover:text-[#141310]">Join</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+<nav class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#141310] text-[#FBF8F0]" style="padding-bottom: env(safe-area-inset-bottom);">
+  <div class="grid grid-cols-3 h-14 kicker text-[9px] uppercase">
+    <a href="../" class="flex flex-col items-center justify-center gap-0.5 text-white/60"><span class="text-base leading-none">🌉</span>Home</a>
+    <a href="./" class="flex flex-col items-center justify-center gap-0.5 font-bold"><span class="text-base leading-none">📚</span>Knowledge</a>
+    <a href="https://chat.whatsapp.com/L8t2NUmdIveDrhwUnQ9xU5" target="_blank" rel="noopener" class="flex flex-col items-center justify-center gap-0.5 text-white/60"><span class="text-base leading-none">💬</span>Join</a>
+  </div>
+</nav>
+</body>
+</html>

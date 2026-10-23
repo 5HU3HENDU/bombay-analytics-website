@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Approval Rate Analysis — Knowledge Base — Bombay Analytics</title>
+<meta name="description" content="How approval rate analysis is done in credit risk: overall metrics, trend, reject reasons, incoming and approved population distribution, and segment approval rates — with synthetic data, charts and tables.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#141310; --line:#CFC6AF; --gold:#B9862F; }
+  body { font-family:'Lora', Georgia, serif; background:#EFE9DA; color:var(--ink); }
+  .masthead,.headline { font-family:'Playfair Display', serif; }
+  .kicker,.sans { font-family:'Inter', sans-serif; }
+  .kicker { letter-spacing:.24em; }
+  .rule-double { border-top:3px solid var(--ink); position:relative; }
+  .rule-double::after { content:''; position:absolute; top:2px; left:0; right:0; border-top:1px solid var(--ink); }
+  table { border-collapse:collapse; width:100%; }
+  th { font-family:'Inter',sans-serif; font-size:11px; letter-spacing:.08em; text-transform:uppercase; text-align:left; }
+  th, td { padding:8px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  tbody tr { transition:background .15s; }
+  .seg-btn { font-family:'Inter',sans-serif; font-weight:600; font-size:13px; padding:8px 18px; border:1.5px solid var(--ink); background:transparent; cursor:pointer; }
+  .seg-btn.active { background:var(--ink); color:#FBF8F0; }
+  .day-row { cursor:pointer; }
+  .day-row:hover { background:#F1EAD8; }
+  .day-row.selected { background:#141310; color:#FBF8F0; }
+  @media (max-width:767px){ body { padding-bottom:64px; } }
+</style>
+</head>
+<body class="py-4 md:py-8 px-3 md:px-4">
+<div class="max-w-5xl mx-auto bg-[#FBF8F0] shadow-xl border border-[#D8D0BA] px-5 md:px-10 py-6 md:py-8">
+
+  <div class="text-center pt-3">
+    <a href="../../" class="masthead font-black text-[32px] md:text-[46px] leading-none tracking-tight">🌉 Bombay Analytics</a>
+    <p class="mt-3 text-[15px] text-neutral-700">India's Community for Credit &amp; Lending Analytics Professionals</p>
+  </div>
+
+  <nav class="rule-double mt-6">
+    <div class="flex items-center justify-center gap-6 md:gap-10 pt-3 pb-1 kicker text-[10px] md:text-xs uppercase font-semibold">
+      <a href="../../" class="text-neutral-500 hover:text-[#141310] transition">Home</a>
+      <a href="../" class="border-b-2 border-[#141310] pb-0.5">Knowledge Base</a>
+      <a href="https://chat.whatsapp.com/L8t2NUmdIveDrhwUnQ9xU5" target="_blank" rel="noopener" class="bg-[#141310] text-[#FBF8F0] px-4 py-1.5 -my-1 hover:bg-neutral-800 transition">Join</a>
+    </div>
+  </nav>
+  <div class="border-b border-[#141310] mt-2"></div>
+
+  <main class="pt-9">
+    <p class="kicker text-[11px] uppercase text-neutral-500"><a href="../" class="underline underline-offset-4">Knowledge Base</a> · Guide 01 · Funnel Monitoring</p>
+    <h1 class="headline font-extrabold text-4xl md:text-[52px] leading-[1.08] mt-3">Approval Rate Analysis</h1>
+    <p class="mt-4 text-[16.5px] leading-relaxed text-neutral-700 max-w-3xl">Whenever customers apply for a loan, they are either approved or rejected based on policy. Changes in policy or incoming population change the approval rate — so it must be tracked continuously, and every movement must be located in a segment.</p>
+    <blockquote class="mt-6 border-y-2 border-[#141310] py-4 headline italic font-semibold text-xl md:text-2xl text-center leading-snug">Approval rate is a function of incoming population and underwriting policy.</blockquote>
+    <p class="sans text-[13px] text-neutral-500 mt-4">Dataset: <strong>synthetic</strong> — 7 days of decisioned loan applications (10–16 Aug 2024), created only to demonstrate the method. Approval rate = Approved ÷ (Approved + Rejected).</p>
+
+    <!-- Overall metrics -->
+    <section class="mt-10">
+      <h2 class="headline font-extrabold text-3xl">Overall metrics</h2>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-5 sans">
+        <div class="border-2 border-[#141310] p-4 bg-white/60"><p class="text-[11px] uppercase tracking-widest text-neutral-500 font-semibold">Applications</p><p id="mApps" class="text-3xl font-bold mt-1.5">–</p></div>
+        <div class="border border-[#CFC6AF] p-4 bg-white/60"><p class="text-[11px] uppercase tracking-widest text-neutral-500 font-semibold">Approved</p><p id="mApproved" class="text-3xl font-bold mt-1.5">–</p></div>
+        <div class="border border-[#CFC6AF] p-4 bg-white/60"><p class="text-[11px] uppercase tracking-widest text-neutral-500 font-semibold">Rejected</p><p id="mRejected" class="text-3xl font-bold mt-1.5">–</p></div>
+        <div class="border-2 border-[#141310] p-4 bg-[#141310] text-[#FBF8F0]"><p class="text-[11px] uppercase tracking-widest text-white/60 font-semibold">Approval rate</p><p id="mRate" class="text-3xl font-bold mt-1.5">–</p></div>
+      </div>
+
+      <div class="mt-6 border border-[#CFC6AF] bg-white/60 p-5">
+        <div class="space-y-3.5 sans text-sm">
+          <div class="flex items-center gap-3"><span class="w-28 shrink-0 font-medium">Applications</span><div class="flex-1 bg-[#EFE9DA] h-6"><div class="bg-[#141310] h-6" style="width:100%"></div></div><span class="w-24 text-right font-semibold" id="fApps">–</span></div>
+          <div class="flex items-center gap-3"><span class="w-28 shrink-0 font-medium">Approved</span><div class="flex-1 bg-[#EFE9DA] h-6"><div class="bg-[#B9862F] h-6" id="fApprovedBar"></div></div><span class="w-24 text-right font-semibold" id="fApproved">–</span></div>
+          <div class="flex items-center gap-3"><span class="w-28 shrink-0 font-medium">Rejected</span><div class="flex-1 bg-[#EFE9DA] h-6"><div class="bg-[#8A8171] h-6" id="fRejectedBar"></div></div><span class="w-24 text-right font-semibold" id="fRejected">–</span></div>
+        </div>
+        <p class="text-[14px] text-neutral-600 mt-4">Start here. The overall number tells you <em>that</em> something moved — never <em>why</em>.</p>
+      </div>
+    </section>
+
+    <!-- Trend -->
+    <section class="mt-12">
+      <h2 class="headline font-extrabold text-3xl">1 · Approval rate trend</h2>
+      <ul class="mt-4 space-y-2 text-[15.5px] leading-relaxed max-w-3xl">
+        <li>- Track approval rate every day. A sudden jump or drop is the first signal of a policy, population or system change.</li>
+        <li>- In this sample, the rate swings between <strong>41.1%</strong> and <strong>48.2%</strong> in one week — wide enough to investigate, segment by segment.</li>
+        <li>- Click any day in the table to inspect it.</li>
+      </ul>
+      <div class="border border-[#CFC6AF] bg-white/60 p-4 mt-5"><div id="trendChart"></div>
+      <p id="daySummary" class="sans text-[13.5px] mt-3 text-neutral-600"></p></div>
+      <div class="overflow-x-auto mt-4">
+        <table id="dailyTable">
+          <thead><tr><th>Day</th><th>Applications</th><th>Approved</th><th>Rejected</th><th>Approval rate</th><th>Change (pp)</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Reject reasons -->
+    <section class="mt-12">
+      <h2 class="headline font-extrabold text-3xl">2 · Reject reasons trend</h2>
+      <ul class="mt-4 space-y-2 text-[15.5px] leading-relaxed max-w-3xl">
+        <li>- An increase or decrease in any reject reason can highlight a policy change, a population change, or incorrect rejections from system/tech issues.</li>
+        <li>- Here, <strong>Low CIBIL Score</strong> is the largest reason and edges up (32% → 34% of rejects), while <strong>Bureau Derogatory</strong> eases down (30% → 28%).</li>
+      </ul>
+      <div class="border border-[#CFC6AF] bg-white/60 p-5 mt-5"><div id="rejectChart"></div></div>
+      <div class="overflow-x-auto mt-4">
+        <table id="rejectTable">
+          <thead><tr><th>Reject reason</th><th>Share of rejects</th><th>7-day trend</th><th>First day</th><th>Last day</th><th>Change (pp)</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Segment explorer -->
+    <section class="mt-12">
+      <h2 class="headline font-extrabold text-3xl">3 · Population &amp; segment analysis</h2>
+      <p class="mt-4 text-[15.5px] leading-relaxed max-w-3xl">One dataset, three questions: Who is coming in? Who is getting approved? And what is the approval rate inside each segment?</p>
+      <div class="flex items-center gap-0 mt-5" role="group" aria-label="Choose segment variable">
+        <button class="seg-btn active" id="btnAge" onclick="setSegment('age')">Age</button>
+        <button class="seg-btn" id="btnSalary" onclick="setSegment('salary')" style="border-left:none;">Salary</button>
+      </div>
+      <p id="segmentNote" class="sans text-[13.5px] text-neutral-600 mt-3"></p>
+
+      <h3 class="headline font-bold text-2xl mt-8">Incoming population distribution</h3>
+      <ul class="mt-3 space-y-2 text-[15.5px] leading-relaxed max-w-3xl">
+        <li>- Changes in incoming population affect approval rate and portfolio performance — a new marketing funnel or sourcing partner can shift it overnight.</li>
+        <li>- Ideally, a better incoming population results in a higher approval rate. Compare the first and last day below; the table shows every day.</li>
+      </ul>
+      <div class="border border-[#CFC6AF] bg-white/60 p-5 mt-4"><div id="incomingChart"></div>
+      <p class="sans text-xs text-neutral-500 mt-2"><span class="inline-block w-3 h-3 bg-[#141310] align-middle mr-1"></span> 10 Aug &nbsp; <span class="inline-block w-3 h-3 bg-[#B9862F] align-middle mr-1"></span> 16 Aug</p></div>
+      <div class="overflow-x-auto mt-4"><table id="incomingTable">
+        <thead><tr><th>Segment</th><th>Trend</th><th>First day</th><th>Last day</th><th>Change (pp)</th><th>Reading</th></tr></thead><tbody></tbody>
+      </table></div>
+
+      <h3 class="headline font-bold text-2xl mt-9">Approved population distribution</h3>
+      <ul class="mt-3 space-y-2 text-[15.5px] leading-relaxed max-w-3xl">
+        <li>- This highlights the impact of policy: a good policy approves a higher proportion of good customers.</li>
+        <li>- If the approved population starts deteriorating in quality, it must be highlighted and dealt with appropriately.</li>
+      </ul>
+      <div class="border border-[#CFC6AF] bg-white/60 p-5 mt-4"><div id="approvedChart"></div>
+      <p class="sans text-xs text-neutral-500 mt-2"><span class="inline-block w-3 h-3 bg-[#141310] align-middle mr-1"></span> 10 Aug &nbsp; <span class="inline-block w-3 h-3 bg-[#B9862F] align-middle mr-1"></span> 16 Aug</p></div>
+      <div class="overflow-x-auto mt-4"><table id="approvedTable">
+        <thead><tr><th>Segment</th><th>Trend</th><th>First day</th><th>Last day</th><th>Change (pp)</th><th>Reading</th></tr></thead><tbody></tbody>
+      </table></div>
+
+      <h3 class="headline font-bold text-2xl mt-9">Approval rate by segment</h3>
+      <ul class="mt-3 space-y-2 text-[15.5px] leading-relaxed max-w-3xl">
+        <li>- Segment approval rates show where policy is tight or loose — and which segments actually move the overall rate.</li>
+        <li>- Always read rate with volume: a high rate on a tiny segment changes little.</li>
+      </ul>
+      <div class="border border-[#CFC6AF] bg-white/60 p-5 mt-4"><div id="segmentRateChart"></div></div>
+      <div class="overflow-x-auto mt-4"><table id="segmentTable">
+        <thead><tr><th>Segment</th><th>Applications</th><th>Approved</th><th>Approval rate</th><th>Share of applications</th></tr></thead><tbody></tbody>
+      </table></div>
+    </section>
+
+    <!-- Takeaways -->
+    <section class="mt-12 border-2 border-[#141310] p-5 md:p-7">
+      <h2 class="headline font-extrabold text-2xl">The method, in one view</h2>
+      <ul class="mt-4 space-y-2.5 text-[15.5px] leading-relaxed">
+        <li>- Monitor the overall approval rate daily.</li>
+        <li>- Never conclude from the overall rate alone — split by segment.</li>
+        <li>- Watch reject reasons for policy, population and system signals.</li>
+        <li>- Compare incoming vs approved distribution to see what policy is selecting.</li>
+        <li>- Read every rate with its volume.</li>
+      </ul>
+      <a href="https://chat.whatsapp.com/L8t2NUmdIveDrhwUnQ9xU5" target="_blank" rel="noopener" class="inline-block mt-6 bg-[#141310] text-[#FBF8F0] sans font-semibold text-sm px-6 py-3 hover:bg-neutral-800 transition">Discuss this in the community ↗</a>
+    </section>
+    <p class="sans text-[12.5px] text-neutral-500 mt-5">Note: This is a demo with synthetic numbers. Definitions used here: approval rate = approved ÷ decisioned applications in the sample.</p>
+  </main>
+
+  <footer class="mt-12">
+    <div class="rule-double"></div>
+    <div class="pt-4 flex flex-col md:flex-row items-center justify-between gap-2.5 text-[13px] text-neutral-600">
+      <p class="masthead font-bold text-[#141310] text-base">🌉 Bombay Analytics</p>
+      <p>India's Community for Credit &amp; Lending Analytics Professionals</p>
+      <nav class="sans font-medium flex gap-5">
+        <a href="../../" class="hover:text-[#141310]">Home</a>
+        <a href="../" class="hover:text-[#141310]">Knowledge Base</a>
+        <a href="https://chat.whatsapp.com/L8t2NUmdIveDrhwUnQ9xU5" target="_blank" rel="noopener" class="hover:text-[#141310]">Join</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+<nav class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#141310] text-[#FBF8F0]" style="padding-bottom: env(safe-area-inset-bottom);">
+  <div class="grid grid-cols-3 h-14 kicker text-[9px] uppercase">
+    <a href="../../" class="flex flex-col items-center justify-center gap-0.5 text-white/60"><span class="text-base leading-none">🌉</span>Home</a>
+    <a href="../" class="flex flex-col items-center justify-center gap-0.5 font-bold"><span class="text-base leading-none">📚</span>Knowledge</a>
+    <a href="https://chat.whatsapp.com/L8t2NUmdIveDrhwUnQ9xU5" target="_blank" rel="noopener" class="flex flex-col items-center justify-center gap-0.5 text-white/60"><span class="text-base leading-none">💬</span>Join</a>
+  </div>
+</nav>
+
+<script>
+const days = [
+  {date:'10 Aug', approved:486, rejected:614},
+  {date:'11 Aug', approved:512, rejected:598},
+  {date:'12 Aug', approved:468, rejected:642},
+  {date:'13 Aug', approved:535, rejected:575},
+  {date:'14 Aug', approved:498, rejected:622},
+  {date:'15 Aug', approved:452, rejected:648},
+  {date:'16 Aug', approved:521, rejected:589}
+];
+days.forEach(d => { d.total = d.approved + d.rejected; d.rate = d.approved * 100 / d.total; });
+
+const rejectReasons = [
+  {name:'Low CIBIL Score', share:34, trend:[32,33,34,35,34,33,34]},
+  {name:'Bureau Derogatory Found', share:28, trend:[30,29,28,27,28,29,28]},
+  {name:'Other', share:16, trend:[16,16,16,16,16,16,16]},
+  {name:'Age Reject', share:12, trend:[13,12,12,11,12,13,12]},
+  {name:'Location Reject', share:10, trend:[9,10,10,11,10,9,10]}
+];
+
+const segmentData = {
+  age: {
+    note:'Age view: 26–35 is the largest incoming segment and its share rises mid-week; 18–25 carries the lowest approval rate.',
+    segments:[
+      {name:'18 to 25', total:1680, approved:588, incoming:[23,22,21,20,21,23,22], approvedShare:[18,17,16,16,17,18,17]},
+      {name:'26 to 35', total:2480, approved:1240, incoming:[31,32,33,34,33,31,32], approvedShare:[35,36,37,37,36,35,36]},
+      {name:'36 to 45', total:1880, approved:940, incoming:[24,24,24,24,24,24,24], approvedShare:[27,27,27,27,27,27,27]},
+      {name:'46 to 55', total:1120, approved:476, incoming:[14,14,14,14,14,14,14], approvedShare:[14,14,14,14,14,14,14]},
+      {name:'56+', total:600, approved:228, incoming:[8,8,8,8,8,8,8], approvedShare:[6,6,6,6,6,6,6]}
+    ]
+  },
+  salary: {
+    note:'Salary view: approval rate rises steadily with salary band — from 30.0% below ₹15k to 55.0% at ₹51k–75k.',
+    segments:[
+      {name:'< ₹15k', total:1240, approved:372, incoming:[17,16,16,15,16,18,16], approvedShare:[12,11,10,10,11,12,11]},
+      {name:'₹15k to 30k', total:2320, approved:928, incoming:[30,30,30,30,30,29,30], approvedShare:[27,27,27,26,27,26,27]},
+      {name:'₹31k to 50k', total:2080, approved:1040, incoming:[27,27,27,27,27,26,27], approvedShare:[29,30,31,31,30,29,30]},
+      {name:'₹51k to 75k', total:1280, approved:704, incoming:[16,16,16,17,16,16,16], approvedShare:[20,20,20,20,20,20,20]},
+      {name:'₹76k+', total:840, approved:428, incoming:[10,11,11,11,11,11,11], approvedShare:[12,12,12,13,12,13,12]}
+    ]
+  }
+};
+
+const fmt = n => n.toLocaleString('en-IN');
+const INK = '#141310', GOLD = '#B9862F', GREY = '#8A8171';
+
+function lineChart(el, values, labels, highlight) {
+  const w = 720, h = 250, padL = 44, padR = 16, padT = 18, padB = 34;
+  const min = Math.floor(Math.min(...values) - 3), max = Math.ceil(Math.max(...values) + 3);
+  const X = i => padL + i * (w - padL - padR) / (values.length - 1);
+  const Y = v => padT + (max - v) / (max - min) * (h - padT - padB);
+  let s = `<svg viewBox="0 0 ${w} ${h}" class="w-full" role="img" aria-label="Approval rate trend chart">`;
+  for (let g = 0; g <= 4; g++) {
+    const v = min + (max - min) * g / 4, y = Y(v);
+    s += `<line x1="${padL}" y1="${y}" x2="${w - padR}" y2="${y}" stroke="#E2DCC8" stroke-width="1"/><text x="${padL - 8}" y="${y + 4}" text-anchor="end" font-size="11" fill="#77705E" font-family="Inter">${v.toFixed(0)}%</text>`;
+  }
+  s += `<polyline fill="none" stroke="${INK}" stroke-width="2.5" points="${values.map((v, i) => X(i) + ',' + Y(v)).join(' ')}"/>`;
+  values.forEach((v, i) => {
+    const big = i === highlight;
+    s += `<circle cx="${X(i)}" cy="${Y(v)}" r="${big ? 7 : 4.5}" fill="${big ? GOLD : INK}" stroke="#FBF8F0" stroke-width="2"><title>${labels[i]}: ${v.toFixed(1)}%</title></circle>`;
+    s += `<text x="${X(i)}" y="${Y(v) - 12}" text-anchor="middle" font-size="12" font-weight="600" fill="${INK}" font-family="Inter">${v.toFixed(1)}%</text>`;
+    s += `<text x="${X(i)}" y="${h - 10}" text-anchor="middle" font-size="11.5" fill="#77705E" font-family="Inter">${labels[i]}</text>`;
+  });
+  document.getElementById(el).innerHTML = s + '</svg>';
+}
+
+function sparkline(values) {
+  const w = 110, h = 28, min = Math.min(...values) - 1, max = Math.max(...values) + 1;
+  const pts = values.map((v, i) => (6 + i * (w - 12) / (values.length - 1)).toFixed(1) + ',' + (h - 4 - (v - min) / (max - min) * (h - 8)).toFixed(1)).join(' ');
+  return `<svg width="${w}" height="${h}" class="inline-block align-middle"><polyline fill="none" stroke="${INK}" stroke-width="2" points="${pts}"/></svg>`;
+}
+
+function hBars(el, rows, suffix) {
+  const max = Math.max(...rows.map(r => r.value));
+  document.getElementById(el).innerHTML = rows.map(r => `
+    <div class="flex items-center gap-3 sans text-sm mb-3">
+      <span class="w-44 shrink-0 font-medium">${r.name}</span>
+      <div class="flex-1 bg-[#EFE9DA] h-6"><div class="h-6" style="width:${(r.value / max * 100).toFixed(1)}%;background:${r.color || INK}"></div></div>
+      <span class="w-16 text-right font-semibold">${r.value.toFixed(1)}${suffix}</span>
+    </div>`).join('');
+}
+
+function groupedBars(el, segments, key) {
+  const max = 40;
+  document.getElementById(el).innerHTML = segments.map(sg => `
+    <div class="sans text-sm mb-3.5">
+      <div class="flex justify-between"><span class="font-medium">${sg.name}</span><span class="text-neutral-500">${sg[key][0]}% → ${sg[key][6]}%</span></div>
+      <div class="bg-[#EFE9DA] h-4 mt-1"><div class="h-4" style="width:${(sg[key][0] / max * 100).toFixed(1)}%;background:${INK}"></div></div>
+      <div class="bg-[#EFE9DA] h-4 mt-1"><div class="h-4" style="width:${(sg[key][6] / max * 100).toFixed(1)}%;background:${GOLD}"></div></div>
+    </div>`).join('');
+}
+
+function reading(trend) {
+  const change = trend[6] - trend[0];
+  const range = Math.max(...trend) - Math.min(...trend);
+  if (Math.abs(change) >= 2) return 'Major change';
+  if (range >= 3) return 'Moved within period';
+  return 'No major change';
+}
+
+function distTable(tableId, segments, key) {
+  document.querySelector('#' + tableId + ' tbody').innerHTML = segments.map(sg => {
+    const change = sg[key][6] - sg[key][0];
+    return `<tr><td class="font-medium">${sg.name}</td><td>${sparkline(sg[key])}</td><td>${sg[key][0]}%</td><td>${sg[key][6]}%</td><td>${change > 0 ? '+' : ''}${change} pp</td><td>${reading(sg[key])}</td></tr>`;
+  }).join('');
+}
+
+let selectedDay = -1;
+function renderDaily() {
+  lineChart('trendChart', days.map(d => d.rate), days.map(d => d.date), selectedDay);
+  document.querySelector('#dailyTable tbody').innerHTML = days.map((d, i) => {
+    const chg = i === 0 ? null : d.rate - days[i - 1].rate;
+    return `<tr class="day-row ${i === selectedDay ? 'selected' : ''}" onclick="selectDay(${i})"><td class="font-medium">${d.date} 2024</td><td>${fmt(d.total)}</td><td>${fmt(d.approved)}</td><td>${fmt(d.rejected)}</td><td class="font-semibold">${d.rate.toFixed(2)}%</td><td>${chg === null ? '—' : (chg > 0 ? '+' : '') + chg.toFixed(2)}</td></tr>`;
+  }).join('');
+  const el = document.getElementById('daySummary');
+  if (selectedDay >= 0) {
+    const d = days[selectedDay];
+    el.textContent = `${d.date} 2024: ${fmt(d.total)} applications · ${fmt(d.approved)} approved · approval rate ${d.rate.toFixed(2)}%.`;
+  } else {
+    el.textContent = 'Tip: click a row to pin a day.';
+  }
+}
+function selectDay(i) { selectedDay = (selectedDay === i) ? -1 : i; renderDaily(); }
+
+function setSegment(key) {
+  const data = segmentData[key];
+  document.getElementById('btnAge').classList.toggle('active', key === 'age');
+  document.getElementById('btnSalary').classList.toggle('active', key === 'salary');
+  document.getElementById('segmentNote').textContent = data.note;
+  groupedBars('incomingChart', data.segments, 'incoming');
+  groupedBars('approvedChart', data.segments, 'approvedShare');
+  distTable('incomingTable', data.segments, 'incoming');
+  distTable('approvedTable', data.segments, 'approvedShare');
+  hBars('segmentRateChart', data.segments.map(sg => ({ name: sg.name, value: sg.approved * 100 / sg.total, color: GOLD })), '%');
+  const totalApps = data.segments.reduce((a, sg) => a + sg.total, 0);
+  document.querySelector('#segmentTable tbody').innerHTML = data.segments.map(sg => `
+    <tr><td class="font-medium">${sg.name}</td><td>${fmt(sg.total)}</td><td>${fmt(sg.approved)}</td><td class="font-semibold">${(sg.approved * 100 / sg.total).toFixed(2)}%</td><td>${(sg.total * 100 / totalApps).toFixed(1)}%</td></tr>`).join('');
+}
+
+// Overall metrics
+const T = days.reduce((a, d) => ({ apps: a.apps + d.total, approved: a.approved + d.approved, rejected: a.rejected + d.rejected }), { apps: 0, approved: 0, rejected: 0 });
+document.getElementById('mApps').textContent = fmt(T.apps);
+document.getElementById('mApproved').textContent = fmt(T.approved);
+document.getElementById('mRejected').textContent = fmt(T.rejected);
+document.getElementById('mRate').textContent = (T.approved * 100 / T.apps).toFixed(2) + '%';
+document.getElementById('fApps').textContent = fmt(T.apps) + ' · 100%';
+document.getElementById('fApproved').textContent = fmt(T.approved) + ' · ' + (T.approved * 100 / T.apps).toFixed(1) + '%';
+document.getElementById('fRejected').textContent = fmt(T.rejected) + ' · ' + (T.rejected * 100 / T.apps).toFixed(1) + '%';
+document.getElementById('fApprovedBar').style.width = (T.approved * 100 / T.apps) + '%';
+document.getElementById('fRejectedBar').style.width = (T.rejected * 100 / T.apps) + '%';
+
+hBars('rejectChart', rejectReasons.map(r => ({ name: r.name, value: r.share, color: r.name === 'Low CIBIL Score' ? GOLD : INK })), '%');
+document.querySelector('#rejectTable tbody').innerHTML = rejectReasons.map(r => {
+  const change = r.trend[6] - r.trend[0];
+  return `<tr><td class="font-medium">${r.name}</td><td>${r.share}%</td><td>${sparkline(r.trend)}</td><td>${r.trend[0]}%</td><td>${r.trend[6]}%</td><td>${change > 0 ? '+' : ''}${change} pp</td></tr>`;
+}).join('');
+
+renderDaily();
+setSegment('age');
+</script>
+</body>
+</html>
